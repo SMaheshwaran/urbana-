@@ -5,8 +5,7 @@ import LoginForm from "@/Components/AdminLogin";
 export default function AdminLogin() {
   return (
     <div className="flex items-center justify-center w-full h-screen">
-      <LoginForm what="admin" />
-    
+      <LoginForm what="user" />
     </div>
   );
 }

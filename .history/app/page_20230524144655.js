@@ -2,8 +2,7 @@
 
 import Image from 'next/image'
 import Table from '../Components/Table'
-import Cards from '../Components/Cards'
-
+import { Card } from '@nextui-org/react';
 
 export default function Home() {
   return (
@@ -114,7 +113,7 @@ export default function Home() {
         </a>
       </div>
       <Table/>
-      <Cards/>
+      <Card/>
     </main>
   )
 }

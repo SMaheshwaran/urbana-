@@ -1,9 +1,4 @@
-"use client";
-
 import Image from 'next/image'
-import Table from '../Components/Table'
-import Cards from '../Components/Cards'
-
 
 export default function Home() {
   return (
@@ -113,8 +108,6 @@ export default function Home() {
           </p>
         </a>
       </div>
-      <Table/>
-      <Cards/>
     </main>
   )
 }

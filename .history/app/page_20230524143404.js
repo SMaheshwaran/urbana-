@@ -1,9 +1,5 @@
-"use client";
-
 import Image from 'next/image'
 import Table from '../Components/Table'
-import Cards from '../Components/Cards'
-
 
 export default function Home() {
   return (
@@ -112,9 +108,8 @@ export default function Home() {
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
+        </Table>
       </div>
-      <Table/>
-      <Cards/>
     </main>
   )
 }

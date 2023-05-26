@@ -1,10 +1,11 @@
 "use client";
-
-import LoginForm from "@/Components/AdminLogin";
 import { useState } from "react";
+import LoginFormForAdmin from "@/Components/LoginForAdmin";
+import { useRouter } from "next/navigation";
 export default function AdminLogin() {
+  const router = useRouter();
   const [reg, setReg] = useState({
-    name: "",
+    username: "",
     password: "",
   });
   const [submitting, setSubmitting] = useState(false);
@@ -13,15 +14,22 @@ export default function AdminLogin() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/AdminRegister", {
+      const res = await fetch("/api/AdminLogin", {
         method: "POST",
         body: JSON.stringify({
-          name: reg.name,
+          username: reg.username,
           password: reg.password,
         }),
       });
       if (res.ok) {
-        console.log("okay");
+        console.log("Approved and signed In");
+        router.push("/AdminDashboard");
+      }
+      if (res.status == 409) {
+        alert("Not yet approved");
+      }
+      if (res.status == 408) {
+        alert("Credentials not valid");
       }
     } catch (error) {
       console.error("error", error);
@@ -31,7 +39,7 @@ export default function AdminLogin() {
   };
   return (
     <div className="flex items-center justify-center w-full h-screen">
-      <LoginForm
+      <LoginFormForAdmin
         reg={reg}
         setReg={setReg}
         submitting={setSubmitting}

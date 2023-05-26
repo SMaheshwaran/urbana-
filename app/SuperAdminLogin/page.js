@@ -3,10 +3,10 @@
 import LoginForm from "@/Components/AdminLogin";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-export default function AdminLogin() {
+export default function SuperAdminLogin() {
   const router = useRouter();
   const [reg, setReg] = useState({
-    username: "",
+    name: "",
     password: "",
   });
   const [submitting, setSubmitting] = useState(false);
@@ -15,20 +15,17 @@ export default function AdminLogin() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/UserLogin", {
+      const res = await fetch("/api/SuperAdminLogin", {
         method: "POST",
         body: JSON.stringify({
-          username: reg.username,
+          name: reg.name,
           password: reg.password,
         }),
       });
-      if (res.status == 201) {
+      if (res.ok) {
         console.log("okay");
 
-        router.push("/UserDashboard");
-      }
-      if (res.status == 409) {
-        alert("Not yet approved by the admin");
+        router.push("/SuperAdminDashboard");
       }
     } catch (error) {
       console.error("error", error);
@@ -43,7 +40,7 @@ export default function AdminLogin() {
         setReg={setReg}
         submitting={setSubmitting}
         handleSubmit={registerAdmin}
-        what="user"
+        what="SuperAdmin"
       />
     </div>
   );

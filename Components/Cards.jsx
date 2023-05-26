@@ -1,15 +1,16 @@
 import { Card, Text } from "@nextui-org/react";
 
-export default function App() {
+export default function PressableCard({ text }) {
   return (
     <Card
       isPressable
       isHoverable
       variant="bordered"
+      className="flex justify-center items-center"
       css={{ mw: "500px" }}
     >
       <Card.Body>
-        <Text>A pressable card.</Text>
+        <Text>{text}</Text>
       </Card.Body>
     </Card>
   );

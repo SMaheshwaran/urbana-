@@ -1,11 +1,13 @@
 "use client";
-
-import LoginForm from "@/Components/AdminLogin";
+import UserRegisterForm from "@/Components/UserRegisterForm";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-export default function AdminLogin() {
+
+export default function UserRegister() {
   const router = useRouter();
   const [reg, setReg] = useState({
+    name: "",
+    apartment: "",
     username: "",
     password: "",
   });
@@ -15,20 +17,21 @@ export default function AdminLogin() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/UserLogin", {
+      const res = await fetch("/api/UserRegister", {
         method: "POST",
         body: JSON.stringify({
+          name: reg.name,
+          apartment: reg.apartment,
           username: reg.username,
           password: reg.password,
         }),
       });
-      if (res.status == 201) {
+      if (res.ok) {
         console.log("okay");
-
-        router.push("/UserDashboard");
+        router.push("/UserLogin");
       }
       if (res.status == 409) {
-        alert("Not yet approved by the admin");
+        alert("username already in use, try different one");
       }
     } catch (error) {
       console.error("error", error);
@@ -36,14 +39,15 @@ export default function AdminLogin() {
       setSubmitting(false);
     }
   };
+
   return (
     <div className="flex items-center justify-center w-full h-screen">
-      <LoginForm
+      <UserRegisterForm
         reg={reg}
         setReg={setReg}
         submitting={setSubmitting}
         handleSubmit={registerAdmin}
-        what="user"
+        what="User"
       />
     </div>
   );

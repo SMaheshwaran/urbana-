@@ -2,10 +2,9 @@
 
 import LoginForm from "@/Components/AdminLogin";
 import { useState } from "react";
-import { useRouter } from "next/navigation";
 export default function AdminLogin() {
-  const router = useRouter();
   const [reg, setReg] = useState({
+    name: "",
     username: "",
     password: "",
   });
@@ -15,20 +14,19 @@ export default function AdminLogin() {
     setSubmitting(true);
 
     try {
-      const res = await fetch("/api/UserLogin", {
+      const res = await fetch("/api/AdminRegister", {
         method: "POST",
         body: JSON.stringify({
+          name: reg.name,
           username: reg.username,
           password: reg.password,
         }),
       });
-      if (res.status == 201) {
+      if (res.ok) {
         console.log("okay");
-
-        router.push("/UserDashboard");
       }
       if (res.status == 409) {
-        alert("Not yet approved by the admin");
+        alert("username already in use, try different one");
       }
     } catch (error) {
       console.error("error", error);
@@ -43,7 +41,7 @@ export default function AdminLogin() {
         setReg={setReg}
         submitting={setSubmitting}
         handleSubmit={registerAdmin}
-        what="user"
+        what="admin"
       />
     </div>
   );

@@ -1,6 +1,6 @@
 import { Schema, model, models } from "mongoose";
 
-const AdminRegSchema = new Schema({
+const UserSchema = new Schema({
   name: {
     type: String,
     unique: [true, "usename should be unique"], // Set the username field as unique
@@ -14,6 +14,10 @@ const AdminRegSchema = new Schema({
       "Username invalid, it should  contain 8-20 alphanumeric letters and be unique!",
     ],
   },
+  apartment: {
+    type: String,
+    required: [true, "apartment no is required"],
+  },
   password: {
     type: String,
     required: [true, "Password is required"],
@@ -25,6 +29,6 @@ const AdminRegSchema = new Schema({
   },
 });
 
-const AdminReg = models.AdminReg || model("AdminReg", AdminRegSchema);
+const User = models.User || model("User", UserSchema);
 
-export default AdminReg;
+export default User;

@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-const LoginForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
+const UserRegisterForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   // Add your login logic here
@@ -11,10 +11,10 @@ const LoginForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
   return (
     <div className="max-w-md mx-auto  bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
       <h2 className="text-center text-2xl font-semibold mb-6">
-        {what} Login Form
+        {what} Register Form
       </h2>
       <form onSubmit={handleSubmit}>
-        {/* <div className="mb-4">
+        <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             name
           </label>
@@ -22,11 +22,11 @@ const LoginForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             id="username"
             type="text"
-            placeholder="Enter your username"
+            placeholder="Enter your name"
             value={reg.name}
             onChange={(e) => setReg({ ...reg, name: e.target.value })}
           />
-        </div> */}
+        </div>
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Username
@@ -38,6 +38,19 @@ const LoginForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
             placeholder="Enter your username"
             value={reg.username}
             onChange={(e) => setReg({ ...reg, username: e.target.value })}
+          />
+        </div>
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2">
+            Apartment NO
+          </label>
+          <input
+            className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            id="username"
+            type="text"
+            placeholder="Enter your Apartment no"
+            value={reg.apartment}
+            onChange={(e) => setReg({ ...reg, apartment: e.target.value })}
           />
         </div>
         <div className="mb-6">
@@ -58,7 +71,7 @@ const LoginForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
             className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
-            Sign In
+            Sign up
           </button>
         </div>
       </form>
@@ -66,4 +79,4 @@ const LoginForm = ({ reg, setReg, submitting, handleSubmit, what }) => {
   );
 };
 
-export default LoginForm;
+export default UserRegisterForm;

@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 export default function AddStaff() {
   const [name, setName] = useState("");
@@ -6,8 +7,8 @@ export default function AddStaff() {
   const [role, setRole] = useState("");
   const [bloodGroup, setBloodGroup] = useState("");
   const [emergencyContact, setEmergencyContact] = useState("");
-
-  const handleSubmit = (e) => {
+  const [submitting, setSubmitting] = useState(false);
+  const handleSubmit = async (e) => {
     e.preventDefault();
     // Handle form submission here
     // You can access the form data using the state variables (name, phoneNumber, role, bloodGroup, emergencyContact)
@@ -17,6 +18,41 @@ export default function AddStaff() {
     console.log("Role:", role);
     console.log("Blood Group:", bloodGroup);
     console.log("Emergency Contact:", emergencyContact);
+
+    try {
+      const res = await fetch("/api/AddStafff", {
+        method: "POST",
+        body: JSON.stringify({
+          name: name,
+          phoneNumber: phoneNumber,
+          role: role,
+          bloodGroup: bloodGroup,
+          emergencyContactNumber: emergencyContact,
+        }),
+      });
+      if (res.ok) {
+        alert("Staff added Successfully");
+        setName("");
+        setPhoneNumber("");
+        setRole("");
+        setBloodGroup("");
+        setEmergencyContact("");
+      }
+      if (res.status == 409) {
+        alert("Staff already exists");
+        setName("");
+        setPhoneNumber("");
+        setRole("");
+        setBloodGroup("");
+        setEmergencyContact("");
+      }
+      if (res.status == 500) {
+        alert("internal server error");
+        console.log(res.statusText);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
   };
 
   return (

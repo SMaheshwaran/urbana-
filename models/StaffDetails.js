@@ -9,15 +9,15 @@ const StaffSchema = new Schema({
     type: String,
     required: true,
   },
+  emergencyContact: {
+    type: String,
+    required: true,
+  },
   role: {
     type: String,
     required: true,
   },
   bloodGroup: {
-    type: String,
-    required: true,
-  },
-  emergencyContact: {
     type: String,
     required: true,
   },

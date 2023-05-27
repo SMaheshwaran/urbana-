@@ -10,6 +10,7 @@ export const POST = async (req, res) => {
   try {
     await connectDB();
     const existingStaff = await StaffDetails.findOne({ name, phoneNumber });
+    console.log(existingStaff);
     if (existingStaff) {
       // Username already exists, return an appropriate response
       return new Response("Staff already exists", {
@@ -23,14 +24,16 @@ export const POST = async (req, res) => {
       phoneNumber,
       role,
       bloodGroup,
-      emergencyContactNumber,
+      emergencyContact: emergencyContactNumber,
     });
+    console.log(staff);
     await staff.save();
     console.log(staff);
     return new Response(JSON.stringify(staff), {
-      status: 201,
+      status: 200,
     });
   } catch (error) {
+    console.log(error);
     return new Response("failed to add staff", { status: 500 });
   }
 };

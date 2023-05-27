@@ -2,7 +2,7 @@ import { connectDB } from "@/utils/database";
 import StaffDetails from "@/models/StaffDetails";
 
 export const POST = async (req, res) => {
-  const { name, phoneNumber } = await res.json();
+  const { name, phoneNumber } = await req.json();
   console.log(name, phoneNumber);
 
   try {
@@ -12,7 +12,7 @@ export const POST = async (req, res) => {
 
     if (existingStaff) {
       return new Response("Staff is registered", {
-        status: 201,
+        status: 200,
       });
     } else {
       return new Response("Staff is not registered", {

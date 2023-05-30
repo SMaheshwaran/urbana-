@@ -22,10 +22,10 @@ export default function AdminLogin() {
           password: reg.password,
         }),
       });
-      if (res.status == 201 || res.status == 200 ) {
+      if (res.status == 201) {
         console.log("okay");
 
-        router.push(`/UserDashboard/${reg.username}/`);
+        router.push(`/UserDashboard/${reg.username}`);
       }
       if (res.status == 409) {
         alert("Not yet approved by the admin");

@@ -1,6 +1,6 @@
 "use client";
 import "../../Styles/NotifyUser.css";
-import { useState,createContext, } from "react";
+import { useState } from "react";
 export default function NotifyUser() {
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -10,7 +10,6 @@ export default function NotifyUser() {
   const [message, setMessage] = useState("");
   const [showMessage, setShowMessage] = useState(false);
   const [ntype, setNtype] = useState();
-  const [nonVisitor, setNonVisitor] = useState(false);
   const getUserData = async () => {
     const res = await fetch("/api/NotifyUser", {
       method: "GET",
@@ -56,28 +55,11 @@ export default function NotifyUser() {
     if (num === 3) {
       setShowMessage(true);
     }
-    
-    else if(num ==1){
-      
-      setMessage("food delivery is here");
-      setNonVisitor(true);
-    }
-    else if(num ==2){
-      
-      setMessage("Product delivery is here");
-      setNonVisitor(true);
-    }
   };
-
-
 
   const finalSend = () => {
     notifyUser();
   };
-
- if(nonVisitor){
-  notifyUser()
- }
 
   return (
     <div className="flex flex-wrap justify-center w-full h-screen">

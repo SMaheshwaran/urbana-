@@ -22,7 +22,7 @@ export default function AdminLogin() {
           password: reg.password,
         }),
       });
-      if (res.status == 201 || res.status == 200 ) {
+      if (res.status == 201) {
         console.log("okay");
 
         router.push(`/UserDashboard/${reg.username}/`);

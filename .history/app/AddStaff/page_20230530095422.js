@@ -1,7 +1,4 @@
-"use client";
-
 import { useState } from "react";
-
 
 export default function AddStaff() {
   const [name, setName] = useState("");
@@ -57,8 +54,7 @@ export default function AddStaff() {
   };
 
   return (
-  <>
-      <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md px-6 py-8 bg-white rounded-md shadow-md">
         <h2 className="mb-6 text-2xl font-bold">Register</h2>
         <form onSubmit={handleSubmit}>
@@ -138,19 +134,6 @@ export default function AddStaff() {
           </button>
         </form>
       </div>
-      <div className="w-full max-w-md max-h-full px-6 py-8 ml-6 bg-white rounded-md shadow-md">
-        <img
-          src="https://via.placeholder.com/400"
-          alt="Registration Image"
-          className="w-full h-auto"
-
-        />
-      </div>
-     
     </div>
-    <footer className="mt-8 text-center text-gray-500">
-        &copy; 2023 Company Name. All rights reserved.
-      </footer>
-  </>
   );
 }

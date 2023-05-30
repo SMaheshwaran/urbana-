@@ -1,6 +1,6 @@
 "use client";
 import "../../Styles/NotifyUser.css";
-import { useState,createContext, } from "react";
+import { useState } from "react";
 export default function NotifyUser() {
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -56,15 +56,9 @@ export default function NotifyUser() {
     if (num === 3) {
       setShowMessage(true);
     }
-    
-    else if(num ==1){
+    else{
       
-      setMessage("food delivery is here");
-      setNonVisitor(true);
-    }
-    else if(num ==2){
-      
-      setMessage("Product delivery is here");
+      setMessage("delivery is here");
       setNonVisitor(true);
     }
   };

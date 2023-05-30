@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-
 export default function AddStaff() {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -138,12 +137,12 @@ export default function AddStaff() {
           </button>
         </form>
       </div>
-      <div className="w-full max-w-md max-h-full px-6 py-8 ml-6 bg-white rounded-md shadow-md">
+      <div className="w-full h-auto max-w-md px-6 py-8 ml-6 bg-white rounded-md shadow-md">
+        <h2 className="mb-6 text-2xl font-bold">Image Section</h2>
         <img
           src="https://via.placeholder.com/400"
           alt="Registration Image"
           className="w-full h-auto"
-
         />
       </div>
      

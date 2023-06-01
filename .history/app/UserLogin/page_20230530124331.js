@@ -17,12 +17,15 @@ export default function AdminLogin() {
     try {
       const res = await fetch("/api/UserLogin", {
         method: "POST",
-        body: JSON.stringify(reg),
+        body: JSON.stringify({
+          username: reg.username,
+          password: reg.password,
+        }),
       });
-      if (res.status == 201 || res.status == 200 ) {
+      if (res.status == 201) {
         console.log("okay");
 
-        router.push(`/UserDashboard/${reg.username}/`);
+        router.push(`/UserDashboard/${reg.username}`);
       }
       if (res.status == 409) {
         alert("Not yet approved by the admin");

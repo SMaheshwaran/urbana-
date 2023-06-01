@@ -10,14 +10,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <>
+    <> <AuthContext.Provider value={{ user, login, logout, isAdmin, isSuperAdmin }}>
       <html lang="en">
       <body className={inter.className}>
         <Navbar />
         {children}
       </body>
     </html>
-   
+    </AuthContext.Provider>
     </>
   );
 }

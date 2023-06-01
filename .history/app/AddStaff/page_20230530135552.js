@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 
-
 export default function AddStaff() {
   const [name, setName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -143,7 +142,6 @@ export default function AddStaff() {
           src="https://via.placeholder.com/400"
           alt="Registration Image"
           className="w-full h-auto"
-
         />
       </div>
      

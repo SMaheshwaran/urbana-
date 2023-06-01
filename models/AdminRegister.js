@@ -23,6 +23,10 @@ const AdminRegSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  role: {
+    type: String,
+    default: "Admin",
+  },
 });
 
 const AdminReg = models.AdminReg || model("AdminReg", AdminRegSchema);

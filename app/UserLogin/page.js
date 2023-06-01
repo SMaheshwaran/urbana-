@@ -17,10 +17,7 @@ export default function AdminLogin() {
     try {
       const res = await fetch("/api/UserLogin", {
         method: "POST",
-        body: JSON.stringify({
-          username: reg.username,
-          password: reg.password,
-        }),
+        body: JSON.stringify(reg),
       });
       if (res.status == 201) {
         console.log("okay");

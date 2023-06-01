@@ -27,6 +27,10 @@ const UserSchema = new Schema({
     type: Boolean,
     default: false,
   },
+  role: {
+    type: String,
+    default: "user",
+  },
 });
 
 const User = models.User || model("User", UserSchema);

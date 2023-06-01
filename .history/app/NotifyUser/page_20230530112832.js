@@ -1,6 +1,6 @@
 "use client";
 import "../../Styles/NotifyUser.css";
-import { useState,createContext, } from "react";
+import { useState } from "react";
 export default function NotifyUser() {
   const [data, setData] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);

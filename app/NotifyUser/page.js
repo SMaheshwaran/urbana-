@@ -74,60 +74,82 @@ export default function NotifyUser() {
   }
 
   return (
-    <div className="flex flex-wrap justify-center w-full h-screen">
-      {data.map((d, index) => (
-        <div
-          key={index}
-          className="letter-div"
-          onClick={() => handleClick(d.apartment, d.name)}
-        >
-          {d.apartment}
-        </div>
-      ))}
-      <Modal
-        isOpen={isModalOpen}
-        onClose={closeModel}
-        handleClick={handleClick}
-      >
-        <h1>{name}</h1>
-        <h1>{apartment}</h1>
-        <button
-          type="button"
-          onClick={() => setNotifyClicked(true)}
-          className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-        >
-          Notify
-        </button>
+    <>
+      <h1 className="block text-center font-semibold text-[30px]">
+        The list of Houses
+      </h1>
 
-        {notifyClicked && (
-          <div className="flex flex-col items-center justify-center">
-            <button onClick={() => sendNotification(1)}>
-              Notify for food delivery
-            </button>
-            <button onClick={() => sendNotification(2)}>
-              Notify for Product delivery
-            </button>
-            <button onClick={() => sendNotification(3)}>
-              Notify for Visitor
-            </button>
+      <div className="flex flex-wrap justify-center w-full h-screen">
+        {data.map((d, index) => (
+          <div
+            key={index}
+            className="letter-div"
+            onClick={() => handleClick(d.apartment, d.name)}
+          >
+            {d.apartment}
           </div>
-        )}
+        ))}
+        <Modal
+          isOpen={isModalOpen}
+          onClose={closeModel}
+          handleClick={handleClick}
+          className="flex flex-col"
+        >
+          <h1 className="block text-[20px] mx-3">Name:{name}</h1>
+          <h1 className="block text-[20px] mx-3">Door No:{apartment}</h1>
+          <button
+            type="button"
+            onClick={() => setNotifyClicked(true)}
+            className="inline-block rounded bg-primary px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-black shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          >
+            Notify
+          </button>
 
-        {showMessage && (
-          <>
-            <input
-              type="text"
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="enter your message"
-              required
-            />
+          {notifyClicked && (
+            <div className="flex flex-col items-center justify-center mt-4 gap-4">
+              <button
+                className="bg-blue-800 px-5 py-2 rounded-full border border-black"
+                onClick={() => sendNotification(1)}
+              >
+                Notify for food delivery
+              </button>
+              <button
+                className="bg-blue-800 px-5 py-2 rounded-full border border-black"
+                onClick={() => sendNotification(2)}
+              >
+                Notify for Product delivery
+              </button>
+              <button
+                className="bg-blue-800 px-5 py-2 rounded-full border border-black"
+                onClick={() => sendNotification(3)}
+              >
+                Notify for Visitor
+              </button>
+            </div>
+          )}
 
-            <button onClick={finalSend}> confirm</button>
-          </>
-        )}
-      </Modal>
-    </div>
+          {showMessage && (
+            <>
+              <input
+                type="text"
+                className="my-5 border border-black placeholder:text-black placeholder:text-center"
+                onChange={(e) => setMessage(e.target.value)}
+                placeholder="enter your message"
+                required
+              />
+
+              <button
+                className="px-5 py-2 rounded-full bg-blue-900 border border-blue-950"
+                onClick={finalSend}
+              >
+                {" "}
+                confirm
+              </button>
+            </>
+          )}
+        </Modal>
+      </div>
+    </>
   );
 }
 
@@ -137,8 +159,8 @@ const Modal = ({ isOpen, onClose, handleClick, children }) => {
   }
 
   return (
-    <div className="modal">
-      <div className="modal-content">
+    <div className="modal ">
+      <div className="modal-content w-2/4 h-3/4 flex flex-col justify-center items-center">
         <button className="modal-close" onClick={onClose}>
           &times;
         </button>

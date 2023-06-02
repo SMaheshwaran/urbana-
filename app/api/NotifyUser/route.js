@@ -30,18 +30,39 @@ export const POST = async (req, res) => {
   }
 };
 
-export const PATCH = (req, res) => {};
+export const PATCH = async (req, res) => {
+  const { _id } = await req.json();
+
+  try {
+    await connectDB();
+
+    const notification = await NotifyUser.findById(_id);
+    if (!notification)
+      return new Response("Notification not found", {
+        status: 404,
+      });
+
+    notification.Notified = true;
+    notification.Approved = true;
+    await notification.save();
+
+    return new Response(JSON.stringify(notification), { status: 200 });
+  } catch (error) {
+    return new Response("Failed to update the notificaation", { status: 500 });
+  }
+};
 
 export const GET = async (req, res) => {
   try {
     await connectDB();
-    const allReg = await User.find({ approved: true });
-    console.log(allReg);
 
-    return new Response(JSON.stringify(allReg), {
-      status: 201,
+    const notifications = await User.find({});
+    console.log(notifications);
+
+    return new Response(JSON.stringify(notifications), {
+      status: 200,
     });
   } catch (error) {
-    return new Response("failed to Fetch ", { status: 500 });
+    return new Response("failed to fetch", { status: 500 });
   }
 };

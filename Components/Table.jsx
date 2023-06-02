@@ -1,14 +1,14 @@
-import { Table } from '@nextui-org/react';
+import { Table } from "@nextui-org/react";
 
 export default function App() {
   const columns = [
-    {
-      key: "name",
-      label: "NAME",
-    },
+    // {
+    //   key: "name",
+    //   label: "NAME",
+    // },
     {
       key: "role",
-      label: "ROLE",
+      label: "Message",
     },
     {
       key: "status",
@@ -17,26 +17,14 @@ export default function App() {
   ];
   const rows = [
     {
-      key: "1",
-      name: "Tony Reichert",
-      role: "CEO",
-      status: "Active",
-    },
-    {
-      key: "2",
-      name: "Zoey Lang",
-      role: "Technical Lead",
-      status: "Paused",
-    },
-    {
       key: "3",
-      name: "Jane Fisher",
+
       role: "Senior Developer",
       status: "Active",
     },
     {
       key: "4",
-      name: "William Howard",
+
       role: "Community Manager",
       status: "Vacation",
     },
@@ -56,9 +44,10 @@ export default function App() {
       </Table.Header>
       <Table.Body items={rows}>
         {(item) => (
-          <Table.Row key={item.key}>
-            {(columnKey) => <Table.Cell>{item[columnKey]}</Table.Cell>}
-          </Table.Row>
+          // <Table.Row key={item.key}>
+          //   {(columnKey) => <Table.Cell>{item[columnKey]}</Table.Cell>}
+          // </Table.Row>
+          <li>{item}</li>
         )}
       </Table.Body>
     </Table>

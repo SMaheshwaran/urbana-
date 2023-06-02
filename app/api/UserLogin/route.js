@@ -5,6 +5,7 @@ export const POST = async (req, res) => {
   console.log(username, password);
 
   try {
+    await connectDB();
     const existingAdmin = await User.findOne({ username, password });
     if (existingAdmin) {
       // Check if the existing admin is approved

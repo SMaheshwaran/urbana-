@@ -19,7 +19,12 @@ export default function AdminLogin() {
         method: "POST",
         body: JSON.stringify(reg),
       });
-      if (res.status == 201 || res.status == 200 ) {
+      if (res.status == 201 || res.status == 200) {
+        console.log("okay");
+
+        router.push(`/UserDashboard/${reg.username}/`);
+      }
+      if (res.ok) {
         console.log("okay");
 
         router.push(`/UserDashboard/${reg.username}/`);
